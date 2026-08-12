@@ -1,3 +1,5 @@
+
+
 /************************************************************************
 EXAMEN - SOLICITUDES DE VIATICOS (SV)
 Y PAGOS DE ALIMENTACION Y TRANSPORTE (PAT)
@@ -35,81 +37,61 @@ USE master;
 GO
 
 CREATE LOGIN usr_JesusFabian_01
-WITH PASSWORD='Bdds_01#',
-DEFAULT_DATABASE=[bd_JesusFabian_01];
+WITH PASSWORD='Bdds_01#2026',
+DEFAULT_DATABASE=bd_JesusFabian_01;
 GO
 
 CREATE LOGIN usr_JesusFabian_02
-WITH PASSWORD='Bdds_02#',
-DEFAULT_DATABASE=[bd_JesusFabian_02];
+WITH PASSWORD='Bdds_02#2026',
+DEFAULT_DATABASE=bd_JesusFabian_02;
 GO
 
 CREATE LOGIN usr_JesusFabian_03
-WITH PASSWORD='Bdds_03#',
-DEFAULT_DATABASE=[bd_JesusFabian_03];
+WITH PASSWORD='Bdds_03#2026',
+DEFAULT_DATABASE=bd_JesusFabian_03;
 GO
 
 CREATE LOGIN usr_JesusFabian_04
-WITH PASSWORD='Bdds_04#',
-DEFAULT_DATABASE=[bd_JesusFabian_04];
+WITH PASSWORD='Bdds_04#2026',
+DEFAULT_DATABASE=bd_JesusFabian_04;
 GO
 
 CREATE LOGIN usr_JesusFabian_05
-WITH PASSWORD='Bdds_05#',
-DEFAULT_DATABASE=[bd_JesusFabian_05];
+WITH PASSWORD='Bdds_05#2026',
+DEFAULT_DATABASE=bd_JesusFabian_05;
 GO
 
 /************************************************************************
 3. CREACION DE LOS 5 USUARIOS
 ************************************************************************/
 
-/************************ USUARIO 01 ************************/
-
 USE bd_JesusFabian_01;
 GO
-
-CREATE USER usr_JesusFabian_01
-FOR LOGIN usr_JesusFabian_01;
+CREATE USER usr_JesusFabian_01 FOR LOGIN usr_JesusFabian_01;
 GO
-
-/************************ USUARIO 02 ************************/
 
 USE bd_JesusFabian_02;
 GO
-
-CREATE USER usr_JesusFabian_02
-FOR LOGIN usr_JesusFabian_02;
+CREATE USER usr_JesusFabian_02 FOR LOGIN usr_JesusFabian_02;
 GO
-
-/************************ USUARIO 03 ************************/
 
 USE bd_JesusFabian_03;
 GO
-
-CREATE USER usr_JesusFabian_03
-FOR LOGIN usr_JesusFabian_03;
+CREATE USER usr_JesusFabian_03 FOR LOGIN usr_JesusFabian_03;
 GO
-
-/************************ USUARIO 04 ************************/
 
 USE bd_JesusFabian_04;
 GO
-
-CREATE USER usr_JesusFabian_04
-FOR LOGIN usr_JesusFabian_04;
+CREATE USER usr_JesusFabian_04 FOR LOGIN usr_JesusFabian_04;
 GO
-
-/************************ USUARIO 05 ************************/
 
 USE bd_JesusFabian_05;
 GO
-
-CREATE USER usr_JesusFabian_05
-FOR LOGIN usr_JesusFabian_05;
+CREATE USER usr_JesusFabian_05 FOR LOGIN usr_JesusFabian_05;
 GO
 
 /************************************************************************
-4. CREACION DE LAS TABLAS DEL MODELO DE VIATICOS
+4. CREACION DE TABLAS
 ************************************************************************/
 
 USE bd_JesusFabian_01;
@@ -167,7 +149,7 @@ TABLA: Colaborador
 
 CREATE TABLE Colaborador(
 
-    IdColaborador BIGINT NOT NULL,
+    IdColaborador BIGINT IDENTITY(1,1) NOT NULL,
     Nombre1 VARCHAR(200) NULL,
     Nombre2 VARCHAR(200) NULL,
     Apellido1 VARCHAR(200) NULL,
@@ -188,7 +170,7 @@ TABLA: Solicitud_Viatico_PAT
 
 CREATE TABLE Solicitud_Viatico_PAT(
 
-    IdSolicitud_Viatico_PAT BIGINT NULL,
+    IdSolicitud_Viatico_PAT BIGINT IDENTITY(1,1) NOT NULL,
     NumeroDocumento VARCHAR(20) NOT NULL,
     Fecha DATE NOT NULL,
     IdTipoDocumento TINYINT NOT NULL,
@@ -222,12 +204,12 @@ TABLA: Solicitud_Viatico_PAT_Detalle
 
 CREATE TABLE Solicitud_Viatico_PAT_Detalle(
 
-    IdSolicitud_Viatico_PAT_Detalle BIGINT NOT NULL,
+    IdSolicitud_Viatico_PAT_Detalle BIGINT IDENTITY(1,1) NOT NULL,
     IdSolicitud_Viatico_PAT BIGINT NOT NULL,
     Renglon TINYINT NULL,
     FechaHora_Inicio DATETIME NULL,
     FechaHora_Final DATETIME NULL,
-    IdTipoTransporte TINYINT NULL,
+    IdTipoTransporte TINYINT NOT NULL,
     LugarSalida VARCHAR(200) NULL,
     LugarDestino VARCHAR(200) NULL,
     MovilizacionExterna DECIMAL(7,2) NULL,
